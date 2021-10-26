@@ -5,8 +5,11 @@ export default {
         state.posts = data
         state.searchPosts = data
     },
+    fetchPost(state: state, data: post) {
+        state.post = data
+    },
     deletePosts(state: state, id: number) {
-        state.posts = state.posts.filter((i: post) => i.id == id)
+        state.posts = state.posts.filter((i: post) => i.id != id)
         state.searchPosts = state.posts
     },
     filterPosts(state: state, title: string) {

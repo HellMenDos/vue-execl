@@ -1,8 +1,12 @@
 <template>
   <input v-model="search" />
-  <div v-for="(item, index) in posts" :key="item.title">
-    <h1>{{ item.title }}</h1>
-    <button @click="delete(item.id)">DELETE</button>
+  <div v-for="(item, index) in posts" :key="item.title" style="width:50%; margin:0 auto;">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.content }}</p>
+    <div style="display:flex;justify-content:space-between;">
+      <button @click="deletePost(item.id)">DELETE</button>
+      <a :href="`post/${item.id}`">GO TO</a>
+    </div>
   </div>
 </template>
 
@@ -23,7 +27,7 @@ export default defineComponent({
     }
   },
   methods: {
-    delete(index) {
+    deletePost(index) {
       console.log(index)
       this.$store.dispatch('deletePostsAction',index)
     }
